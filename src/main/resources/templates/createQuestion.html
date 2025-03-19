@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список вопросов</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Список вопросов</h1>
+
+    <!-- Тип тестирования -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Тип тестирования: <span th:text="${type}"></span></h4>
+        <!-- Кнопка создания нового вопроса -->
+        <a th:href="@{/admin/question/new/{type}(type=${type})}" class="btn btn-success">Создать новый вопрос</a>
+    </div>
+
+    <!-- Таблица вопросов -->
+    <table class="table table-striped table-bordered shadow-lg">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Name</th>
+            <th scope="col">Подробнее</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Thymeleaf цикл для отображения каждой строки -->
+        <tr th:each="question, indexStat : ${questions}">
+            <th scope="row" th:text="${indexStat.count}">1</th>
+            <td th:text="${question.id}">1</td>
+            <td th:text="${question.type}">Тип</td>
+            <td th:text="${question.text}">Название</td>
+            <td>
+                <a th:href="@{'/admin/question/details/' + ${question.id}}" class="btn btn-info btn-sm">Подробнее</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Кнопка возврата -->
+    <div class="text-center mt-4">
+        <a th:href="@{/}" class="btn btn-primary">Вернуться назад</a>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
