@@ -32,7 +32,7 @@ public class AdminController {
     @GetMapping("/createQuestion/{type}")
     public String createQuestion(@PathVariable("type") Long type, Model model){
         model.addAttribute("type", type);
-        List<Question> questions = service.getQuestions(type);
+        List<Question> questions = service.getQuestionsForAdmin(type);
         model.addAttribute("questions", questions);
         return "createQuestion";
     }

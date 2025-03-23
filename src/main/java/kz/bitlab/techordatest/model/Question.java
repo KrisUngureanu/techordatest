@@ -24,4 +24,6 @@ public class Question{
     private Long type;
     @OneToMany(fetch = FetchType.LAZY)
     List<Answer> answers;
+    private String textArea;
+
 }

@@ -81,7 +81,12 @@ public class QuestionService {
         Collections.shuffle(questions); // Перемешиваем
         return questions.stream().limit(30).toList(); // Берём 30 случайных
     }
+    public List<Question> getQuestionsForAdmin(Long typeId){
 
+        // Загружаем все вопросы
+
+        return repository.findByType(typeId); // Берём 30 случайных
+    }
 
     public Question getQuestionById(Long id) {
         return repository.findById(id).orElse(null);

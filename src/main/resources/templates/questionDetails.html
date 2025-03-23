@@ -41,7 +41,10 @@
                 <dt class="col-sm-3">Ответы:</dt>
                 <dd class="col-sm-9">
                     <ul class="list-group">
-                        <li class="list-group-item" th:each="answer : ${question.answers}" th:text="${answer.text}">Ответ</li>
+                        <li class="list-group-item" th:each="answer : ${question.answers}">
+                            <span th:text="${answer.text}">Ответ</span>
+                            <span th:if="${answer.correct}" style="color: green;">(Верный)</span>
+                        </li>
                     </ul>
                 </dd>
             </dl>
